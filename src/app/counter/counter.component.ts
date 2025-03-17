@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, NgZone, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, signal } from '@angular/core';
 
 import { InfoMessageComponent } from '../info-message/info-message.component';
 
@@ -11,9 +11,11 @@ import { InfoMessageComponent } from '../info-message/info-message.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterComponent implements OnInit {
-  private zone = inject(NgZone);
+  // private zone = inject(NgZone);
 
-  count = signal(0);
+  // count = signal(0);
+
+  count = 0;
 
   get debugOutput() {
     console.log('[Counter] "debugOutput" binding re-evaluated.');
@@ -22,7 +24,10 @@ export class CounterComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.count.set(0);
+      // this.count.set(0);
+      console.log('before reset');
+      this.count = 0
+      console.log('after reset');
     }, 4000);
 
     // setTimeout(() => {
@@ -30,18 +35,27 @@ export class CounterComponent implements OnInit {
     // }, 5000);  
 
     // ---Avoiding Zone Pollution--- //
-    this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        console.log('Timer expired!');
-      }, 5000);
-    });
+    // this.zone.runOutsideAngular(() => {
+    //   setTimeout(() => {
+    //     console.log('Timer expired!');
+    //   }, 5000);
+    // });
+
+    // ---No need to Avoide Zone Pollution--- //
+    // this.zone.runOutsideAngular(() => {
+    setTimeout(() => {
+      console.log('Timer expired!');
+    }, 5000);
+    // });
   }
 
   onDecrement() {
-    this.count.update((prevCount) => prevCount - 1);
+    // this.count.update((prevCount) => prevCount - 1);
+    this.count = this.count - 1;
   }
 
   onIncrement() {
-    this.count.update((prevCount) => prevCount + 1);
+    // this.count.update((prevCount) => prevCount + 1);
+    this.count = this.count + 1;
   }
 }

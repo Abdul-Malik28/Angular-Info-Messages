@@ -30,6 +30,5 @@ export class NewMessageComponent {
 
     // this.enteredText.set('');
     this.enteredText = '';
-    console.log(this.messagesService.allMessages);
   }
 }

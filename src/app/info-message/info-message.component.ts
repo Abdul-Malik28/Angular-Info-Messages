@@ -12,7 +12,6 @@ export class InfoMessageComponent {
   get debugOutput() {
     console.log('[InfoMessages] "debugOutput" binding re-evaluated.');
     return 'InfoMessage Component Debug Output';
-    // return Math.random();     // ExpressionChangedAfterItHasBeenCheckedError
   }
 
   onLog() {

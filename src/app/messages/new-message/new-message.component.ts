@@ -12,11 +12,7 @@ import { MessagesService } from '../messages.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewMessageComponent {
-  // add = output<string>();
   private messagesService = inject(MessagesService);
-
-  // enteredText = signal('');   // no matter if it is signal or not
-  // enteredText = '';
 
   enteredText = signal('');
 
@@ -26,15 +22,8 @@ export class NewMessageComponent {
   }
 
   onSubmit() {
-    // this.add.emit(this.enteredText());
-    // this.messagesService.addMessage(this.enteredText());
-    // this.messagesService.addMessage(this.enteredText);
-
     this.messagesService.addMessage(this.enteredText());
 
-    // this.enteredText.set('');
-    // this.enteredText = '';
-
-    this.enteredText.set(''); 
+    this.enteredText.set('');
   }
 }

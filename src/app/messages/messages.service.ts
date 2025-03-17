@@ -19,6 +19,6 @@ export class MessagesService {
     // this.messages.update((prevMessages) => [...prevMessages, message]);
     this.messages = [...this.messages, message];
 
-    this.messages$.next(this.messages);
+    this.messages$.next([...this.messages]);
   }
 }

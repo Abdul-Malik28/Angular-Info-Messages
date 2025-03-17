@@ -16,12 +16,15 @@ export class MessagesListComponent implements OnInit {
   private cdRef = inject(ChangeDetectorRef);
 
   // messages = this.messagesService.allMessages;
-  get messages() {
-    return this.messagesService.allMessages;
-  }
+  // get messages() {
+  //   return this.messagesService.allMessages;
+  // }
+
+  messages: string[] = [];
 
   ngOnInit() {
-    this.messagesService.messages$.subscribe(() => {
+    this.messagesService.messages$.subscribe((messages) => {
+      this.messages = messages;
       this.cdRef.markForCheck();
     });
   }

@@ -13,9 +13,9 @@ import { InfoMessageComponent } from '../info-message/info-message.component';
 export class CounterComponent implements OnInit {
   // private zone = inject(NgZone);
 
-  // count = signal(0);
+  count = signal(0);
 
-  count = 0;
+  // count = 0;
 
   get debugOutput() {
     console.log('[Counter] "debugOutput" binding re-evaluated.');
@@ -24,10 +24,10 @@ export class CounterComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      // this.count.set(0);
-      console.log('before reset');
-      this.count = 0
-      console.log('after reset');
+      this.count.set(0);
+      // console.log('before reset');
+      // this.count = 0
+      // console.log('after reset');
     }, 4000);
 
     // setTimeout(() => {
@@ -50,12 +50,12 @@ export class CounterComponent implements OnInit {
   }
 
   onDecrement() {
-    // this.count.update((prevCount) => prevCount - 1);
-    this.count = this.count - 1;
+    this.count.update((prevCount) => prevCount - 1);
+    // this.count = this.count - 1;
   }
 
   onIncrement() {
-    // this.count.update((prevCount) => prevCount + 1);
-    this.count = this.count + 1;
+    this.count.update((prevCount) => prevCount + 1);
+    // this.count = this.count + 1;
   }
 }

@@ -28,6 +28,7 @@ export class CounterComponent implements OnInit {
     //   console.log('Timer expired!');
     // }, 5000);
 
+    // ---Avoiding Zone Pollution--- //
     this.zone.runOutsideAngular(() => {
       setTimeout(() => {
         console.log('Timer expired!');
